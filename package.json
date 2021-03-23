@@ -1,38 +1,46 @@
 {
-  "name": "react-platform-ui-poc",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^12.8.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "react-platform-ui-poc",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@testing-library/jest-dom": "^5.11.9",
+        "@testing-library/react": "^11.2.5",
+        "@testing-library/user-event": "^12.8.3",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-scripts": "4.0.3",
+        "web-vitals": "^1.1.1"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "GENERATE_SOURCEMAP=false react-scripts build && npm run build-rename",
+        "deploy": "npm run build && sfdc-deploy",
+        "test": "react-scripts test",
+        "build-rename": "npm run build-rename-js && npm run build-rename-css",
+        "build-rename-js": "renamer --find '/main.(.*?)chunk.js$/g' --replace 'main.js' build/static/js/*.js && renamer --find '/.*chuck.js$/g' --replace 'chunk.js' build/static/js/*.js",
+        "build-rename-css": "renamer --find '/main.(.*?)chunk.css/g' --replace 'main.css' build/static/css/*.css",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "node-sfdc-deploy": "0.0.5",
+        "renamer": "^2.0.1"
+    }
 }
