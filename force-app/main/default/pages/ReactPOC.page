@@ -1,0 +1,21 @@
+<apex:page docType="html-5.0"
+            showHeader="false"
+            sidebar="false"
+            standardStyleSheets="false"
+            contentType="text/html">
+    <html lang="en">
+        <apex:slds />
+        <body>
+            <div class="slds-scope">
+                <div id="root"></div>
+            </div>
+            <apex:includeScript value="{!URLFOR($Resource.app, '/bundle.js')}"/>
+        </body>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                mount(document.getElementById("root"));
+            });
+        </script>
+    </html>
+</apex:page>
