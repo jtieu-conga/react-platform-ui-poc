@@ -7,11 +7,12 @@ class CatalogComponent extends LitElement {
         return {
             view: { type: String },
             btnName: { type: String },
-            data: { type: Array }
+            data: { type: Array },
+            dataStr: { type: String }
         };
     }
 
-    constructor() {
+    constructor(props) {
         super();
         this.view = 'Grid';
         this.btnName = 'Change View';
@@ -39,6 +40,9 @@ class CatalogComponent extends LitElement {
     }
 
     render() {
+        if (this.dataStr) {
+            this.data = JSON.parse(this.dataStr);
+        }
         return html`
             <style>
             .catalog-items {
