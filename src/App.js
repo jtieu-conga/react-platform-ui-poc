@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./litelements/catalog-component/catalog-component"
+import "extensible-ui-framework";
 
 const mockData = {
     mac: [{
@@ -60,10 +60,10 @@ const App = () => {
                     </div>
                 </div>
             </div>
-            <div>
+            {/* <div>
                 <button onClick={() => {setDataStr(JSON.stringify(mockData.mac))}}>Mac</button>
                 <button onClick={() => {setDataStr(JSON.stringify(mockData.ipad))}}>iPad</button>
-            </div>
+            </div> */}
             <div>
                 <catalog-component dataStr={dataStr} view="List" />
             </div>
