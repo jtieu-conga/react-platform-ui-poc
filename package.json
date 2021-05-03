@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx webpack src && cp dist/main.js force-app/main/default/staticresources/app/bundle.js",
+    "build": "npx webpack src && cp dist/bundle.js force-app/main/default/staticresources/app/bundle.js",
     "deploy": "npm run build && sfdx force:source:push"
   },
   "author": "",

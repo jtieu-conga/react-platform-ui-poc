@@ -1,3 +1,5 @@
+const webpack = require("webpack");
+
 module.exports = {
     mode: "production",
 
@@ -6,7 +8,7 @@ module.exports = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".js", ".ts", ".tsx"]
+        extensions: [".ts", ".tsx", ".js", ".jsx"]
     },
 
     module: {
@@ -21,13 +23,21 @@ module.exports = {
                 ]
             },
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            {
-                enforce: "pre",
-                test: /\.js$/,
-                loader: "source-map-loader"
-            }
+            // {
+            //     enforce: "pre",
+            //     test: /\.js$/,
+            //     loader: "source-map-loader"
+            // }
         ]
     },
+
+    output: {
+        path: __dirname + "/dist",
+        publicPath: "/",
+        filename: "bundle.js",
+    },
+
+    plugins: [new webpack.HotModuleReplacementPlugin()],
 
     // // When importing a module whose path matches one of the following, just
     // // assume a corresponding global variable exists and use that instead.
